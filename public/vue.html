@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>VueJS</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="styles/main.css" />
+</head>
+
+<body class="hide-drawer">
+    <h1>vuejs</h1>
+
+    <div id="app">
+        <section id="panel">
+            <button class="create" v-on:click="createDrawer">create</button>
+        </section>
+
+        <main id="people">
+            <people-list
+                v-for="person in list"
+                v-bind:key="person.id"
+                v-bind:person="person"
+                v-on:edit-drawer="id => editDrawer(id)"
+                inline-template>
+                <section>
+                    <p>{{ person.firstName }} {{ person.lastName }} was born on {{ birthString(person.birthDate) }} in {{ person.birthPlace }}. {{ person.firstName }} currently lives in {{ person.currentHome }} and is {{ age(person.birthDate) }} years old.</p>
+                    <button class="edit" v-on:click="$emit('edit-drawer', person.id)">✎</button>
+                </section>
+            </people-list>
+        </main>
+
+        <section id="drawer">
+            <header>
+                <h2 v-bind:text="drawerTitle">Edit</h2>
+                <button class="close" v-on:click="hideDrawer = true">×</button>
+            </header>
+            <template v-if="currentDrawerIndex !== null">
+                <article>
+                    <p><input type="text" class="first-name-input" placeholder="First Name" v-model="list[currentDrawerIndex].firstName" /> <input type="text" class="last-name-input" placeholder="Last Name" v-model="list[currentDrawerIndex].lastName" /> was born on <input type="date" class="birth-date-input" placeholder="Birth Date" v-model="list[currentDrawerIndex].birthDate" /> in <input type="text" class="birthplace-input" placeholder="Birthplace" v-model="list[currentDrawerIndex].birthPlace" /> and currently lives in <input type="text" class="current-home-input" placeholder="Current Home" v-model="list[currentDrawerIndex].currentHome" />.</p>
+                </article>
+                <footer>
+                    <button class="save" v-on:click="saveEdit(list[currentDrawerIndex].id)">✓ save</button>
+                    <button class="delete" v-on:click="deleteBtnClick(list[currentDrawerIndex].id)">✗ delete</button>
+                </footer>
+            </template>
+            <template v-else>
+                <article>
+                    <p><input type="text" class="first-name-input" placeholder="First Name" v-model="drawerList.firstName" /> <input type="text" class="last-name-input" placeholder="Last Name" v-model="drawerList.lastName" /> was born on <input type="date" class="birth-date-input" placeholder="Birth Date" v-model="drawerList.birthDate" /> in <input type="text" class="birthplace-input" placeholder="Birthplace" v-model="drawerList.birthPlace" /> and currently lives in <input type="text" class="current-home-input" placeholder="Current Home" v-model="drawerList.currentHome" />.</p>
+                </article>
+                <footer>
+                    <button class="save" v-on:click="saveCreate">✓ save</button>
+                </footer>
+            </template>
+        </section>
+        <div id="drawer_overlay" v-on:click="hideDrawer = true"></div>
+    </div>
+
+    <script src="scripts/vue-2.5.17.js"></script>
+    <script src="scripts/vue.js"></script>
+</body>
+</html>

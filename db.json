@@ -1,0 +1,12 @@
+{
+  "people": [
+    {
+      "birthDate": "2000-08-08",
+      "birthPlace": "Birthplace",
+      "currentHome": "CurrentHome",
+      "firstName": "FirstName",
+      "lastName": "LastName",
+      "id": 1
+    }
+  ]
+}

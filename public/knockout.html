@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Knockout</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="styles/main.css" />
+</head>
+
+<body class="hide-drawer" data-bind="css: {'hide-drawer': hideDrawer}">
+    <h1>knockoutjs</h1>
+
+    <section id="panel">
+        <button class="create" data-bind="click: createDrawer">create</button>
+    </section>
+
+    <main id="people" data-bind="foreach: list">
+        <section data-bind="attr: {'data-id': id}">
+            <p><!-- ko text: firstName --><!-- /ko --> <!-- ko text: lastName --><!-- /ko --> was born on <!-- ko text: $parent.birthDateStr(birthDate) --><!-- /ko --> in <!-- ko text: birthPlace --><!-- /ko -->. <!-- ko text: firstName --><!-- /ko --> currently lives in <!-- ko text: currentHome --><!-- /ko --> and is <!-- ko text: $parent.age(birthDate) --><!-- /ko --> years old.</p>
+            <button class="edit" data-bind="click: $root.editDrawer">✎</button>
+        </section>
+    </main>
+
+    <section id="drawer" data-bind="attr: {'data-type': drawerType, 'data-id': drawerList().id}" >
+        <header>
+            <h2 data-bind="text: drawerTitle"></h2>
+            <button class="close" data-bind="click: function() { $root.hideDrawer(true); }">×</button>
+        </header>
+        <article>
+            <p><input type="text" class="first-name-input" placeholder="First Name" data-bind="value: drawerList().firstName" /> <input type="text" class="last-name-input" placeholder="Last Name" data-bind="value: drawerList().lastName" /> was born on <input type="date" class="birth-date-input" placeholder="Birth Date" data-bind="value: drawerList().birthDate" /> in <input type="text" class="birthplace-input" placeholder="Birthplace"  data-bind="value: drawerList().birthPlace" /> and currently lives in <input type="text" class="current-home-input" placeholder="Current Home" data-bind="value: drawerList().currentHome" />.</p>
+        </article>
+        <footer>
+            <button class="save" data-bind="click: saveBtnClick">✓ save</button>
+            <button class="delete" data-bind="click: deleteBtnClick">✗ delete</button>
+        </footer>
+    </section>
+    <div id="drawer_overlay" data-bind="click: function() { $root.hideDrawer(true); }"></div>
+
+    <script src="scripts/knockout-3.4.2.js"></script>
+    <script src="scripts/knockout.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+  
+html {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 10px;
+}
+
+h1 {
+	font-size: 3rem;
+	margin: 3rem 2rem;
+}
+h2 {
+	font-size: 2rem;
+	margin: 2rem;
+}
+p {
+	font-size: 1.6rem;
+	line-height: 2rem;
+	margin: 2rem;
+}
+
+#panel {
+	border: 1px solid gainsboro;
+	margin: 1rem;
+	padding: 1rem;
+	width: 50%;
+}
+
+#people {
+	width: 50%;
+}
+#people section {
+	background-color: gainsboro;
+	border: 1px solid gray;
+	margin: 1rem;
+	padding-right: 3rem;
+	position: relative;
+}
+#people section .edit {
+	background: none;
+	border: 0;
+	cursor: pointer;
+	font-size: 2rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+#drawer {
+	background-color: white;
+	border: 1px solid gainsboro;
+	box-shadow: 0 0 2rem rgba(0,0,0,0.5);
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	opacity: 1;
+	position: fixed;
+	right: 0;
+	top: 0;
+	transform: translate3d(0, 0, 0);
+	transition: all 0.25s;
+	width: 450px;
+	z-index: 1;
+}
+body.hide-drawer #drawer {
+	opacity: 0;
+	transform: translate3d(100%, 0, 0);
+}
+#drawer header {
+	border-bottom: 1px solid black;
+	text-align: center;
+}
+#drawer header .close {
+	background: none;
+	border: 0;
+	cursor: pointer;
+	font-size: 2rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#drawer article {
+	flex-grow: 1;
+}
+#drawer footer {
+	border-top: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	text-align: center;
+}
+#drawer footer button {
+	font-size: 2rem;
+	margin: 1rem;
+	padding: 1rem;
+}
+#drawer[data-type="create"] footer .delete {
+	display: none;
+}
+
+#drawer_overlay {
+	background-color: rgba(0, 0, 0, 0.25);
+	bottom: 0;
+	left: 0;
+	opacity: 1;
+	position: fixed;
+	right: 0;
+	top: 0;
+	transform: translate3d(0, 0, 0);
+	transition: transform 0s, opacity 0.25s;
+}
+body.hide-drawer #drawer_overlay {
+	opacity: 0;
+	transform: translate3d(-100%, 0, 0);
+	transition: transform 0s 0.25s, opacity 0.25s;
+}
