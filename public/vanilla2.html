@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Vanilla Javascript 2</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="styles/main.css" />
+</head>
+
+<body class="hide-drawer">
+    <h1>vanilla js 2</h1>
+
+    <section id="panel">
+        <button class="create">create</button>
+    </section>
+
+    <main id="people"></main>
+
+    <section id="drawer">
+        <header>
+            <h2>Edit</h2>
+            <button class="close">×</button>
+        </header>
+        <article>
+            <p><input type="text" class="first-name-input" placeholder="First Name" /> <input type="text" class="last-name-input" placeholder="Last Name" /> was born on <input type="date" class="birth-date-input" placeholder="Birth Date" /> in <input type="text" class="birthplace-input" placeholder="Birthplace" /> and currently lives in <input type="text" class="current-home-input" placeholder="Current Home" />.</p>
+        </article>
+        <footer>
+            <button class="save">✓ save</button>
+            <button class="delete">✗ delete</button>
+        </footer>
+    </section>
+    <div id="drawer_overlay"></div>
+
+    <script src="scripts/vanilla2.js"></script>
+</body>
+</html>

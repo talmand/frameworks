@@ -4,9 +4,25 @@
       "birthDate": "2000-08-08",
       "birthPlace": "Birthplace",
       "currentHome": "CurrentHome",
-      "firstName": "FirstName",
-      "lastName": "LastName",
+      "firstName": "FirstName1",
+      "lastName": "LastName1",
       "id": 1
+    },
+    {
+      "birthDate": "2000-08-08",
+      "birthPlace": "Birthplace",
+      "currentHome": "CurrentHome",
+      "firstName": "FirstName2",
+      "lastName": "LastName2",
+      "id": 2
+    },
+    {
+      "birthDate": "2000-08-08",
+      "birthPlace": "Birthplace",
+      "currentHome": "CurrentHome",
+      "firstName": "FirstName3",
+      "lastName": "LastName3",
+      "id": 3
     }
   ]
 }

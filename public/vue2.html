@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>VueJS 2</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="styles/main.css" />
+</head>
+
+<body class="hide-drawer">
+    <h1>vuejs 2</h1>
+
+    <div id="app">
+        <section id="panel">
+            <button class="create" v-on:click="createDrawer">create</button>
+        </section>
+
+        <main id="people">
+            <people-list
+                v-for="person in sharedState.list"
+                v-bind:key="person.id"
+                v-bind:person="person">
+            </people-list>
+        </main>
+
+        <drawer
+            v-bind:person="sharedState.drawerPerson"
+            v-bind:title="sharedState.drawerTitle"
+            v-bind:type="sharedState.drawerType">
+        </drawer>
+
+        <div id="drawer_overlay" v-on:click="() => hideDrawer(true)"></div>
+    </div>
+
+    <script type="text/x-template" id="people_list_template">
+        <section>
+            <p>{{ person.firstName }} {{ person.lastName }} was born on {{ birthString(person.birthDate) }} in {{ person.birthPlace }}. {{ person.firstName }} currently lives in {{ person.currentHome }} and is {{ age(person.birthDate) }} years old.</p>
+            <button class="edit" v-on:click="editButton">✎</button>
+        </section>
+    </script>
+
+    <script type="text/x-template" id="drawer_template">
+        <section id="drawer" v-bind:data-type="type">
+            <header>
+                <h2>{{ title }}</h2>
+                <button class="close" v-on:click="() => hideDrawer(true)">×</button>
+            </header>
+            <article>
+                <p><input type="text" class="first-name-input" placeholder="First Name" v-model="person.firstName" /> <input type="text" class="last-name-input" placeholder="Last Name" v-model="person.lastName" /> was born on <input type="date" class="birth-date-input" placeholder="Birth Date" v-model="person.birthDate" /> in <input type="text" class="birthplace-input" placeholder="Birthplace" v-model="person.birthPlace" /> and currently lives in <input type="text" class="current-home-input" placeholder="Current Home" v-model="person.currentHome" />.</p>
+            </article>
+            <footer>
+                <button class="save" v-on:click="saveButton">✓ save</button>
+                <button class="delete" v-on:click="deleteButton">✗ delete</button>
+            </footer>
+        </section>
+    </script>
+
+    <script src="scripts/vue-2.5.17.js"></script>
+    <script src="scripts/vue2.js"></script>
+</body>
+</html>
